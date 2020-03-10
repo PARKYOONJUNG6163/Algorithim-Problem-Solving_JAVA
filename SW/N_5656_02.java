@@ -1,6 +1,6 @@
 package SWExpertAcademy;
 /**
-* 전체 개수에서 제거된 벽돌 개수 빼주는 방식이 조금 더 
+* 전체 개수에서 제거된 벽돌 개수 빼주는 방식이 조금 더 빠르다  
 */
 import java.io.BufferedReader;
 import java.io.IOException;
