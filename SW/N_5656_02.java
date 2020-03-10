@@ -1,5 +1,7 @@
 package SWExpertAcademy;
-
+/**
+* ì „ì²´ ê°œìˆ˜ì—ì„œ ì œê±°ëœ ë²½ëŒ ê°œìˆ˜ ë¹¼ì£¼ëŠ” ë°©ì‹ì´ ì¡°ê¸ˆ ë” 
+*/
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -44,21 +46,21 @@ public class N_5656_02 {
 			return;
 		}
 		
-		for (int i = 0; i < arr[0].length; i++) { // ´øÁú ¿­ ±¸ÇÏ±â
+		for (int i = 0; i < arr[0].length; i++) { // ë˜ì§ˆ ì—´ êµ¬í•˜ê¸°
 			int[][] temp = new int[arr.length][arr[0].length];
 			int now_total = total;
-			for (int k = 0; k < arr.length; k++) { // ÀÓ½Ã ¹è¿­
+			for (int k = 0; k < arr.length; k++) { // ì„ì‹œ ë°°ì—´
 				System.arraycopy(arr[k], 0, temp[k], 0, arr[0].length);
 			}
 			for (int j = 0; j < arr.length; j++) {
-				if(arr[j][i] != 0) { // º®µ¹ ÀÖÀ¸¸é 
-					total -= removeBrick(j,i); // º®µ¹ Á¦°Å
-					setBrick(); // º®µ¹ ¼ÂÆÃÇÏ±â
+				if(arr[j][i] != 0) { // ë²½ëŒ ìˆìœ¼ë©´ 
+					total -= removeBrick(j,i); // ë²½ëŒ ì œê±°
+					setBrick(); // ë²½ëŒ ì…‹íŒ…í•˜ê¸°
 					break;
 				}
 			}
 			go(count+1);
-			for (int k = 0; k < arr.length; k++) { // ´Ù½Ã ¿ø·¡ ¹è¿­·Î
+			for (int k = 0; k < arr.length; k++) { // ë‹¤ì‹œ ì›ë˜ ë°°ì—´ë¡œ
 				System.arraycopy(temp[k], 0, arr[k], 0, arr[0].length);
 			}
 			total = now_total;
@@ -76,7 +78,7 @@ public class N_5656_02 {
 			if(arr[d.x][d.y] == 0) {
 				continue;
 			}
-			arr[d.x][d.y] = 0; // º®µ¹ Á¦°Å µÊ
+			arr[d.x][d.y] = 0; // ë²½ëŒ ì œê±° ë¨
 			remove_num++;
 			for (int i = 0; i < dot.length; i++) {
 				for (int j = 1; j < num; j++) {
@@ -88,7 +90,7 @@ public class N_5656_02 {
 					if(arr[dx][dy] > 1) {
 						queue.add(new DOT(dx,dy));
 					}else{
-						arr[dx][dy] = 0; // º®µ¹ Á¦°Å µÊ
+						arr[dx][dy] = 0; // ë²½ëŒ ì œê±° ë¨
 						remove_num++;
 					}
 				}
