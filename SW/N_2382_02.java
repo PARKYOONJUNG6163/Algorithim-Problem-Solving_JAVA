@@ -1,4 +1,4 @@
-package SSAFY;
+package SWExpertAcademy;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class N_2382 {
+public class N_2382_02 {
 	public static int[][] dot = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 
 	public static void main(String[] args) {
@@ -93,3 +93,4 @@ public class N_2382 {
 		}
 	}
 }
+
