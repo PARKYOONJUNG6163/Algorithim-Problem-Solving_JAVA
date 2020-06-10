@@ -1,4 +1,4 @@
-package SSAFY;
+package BaekJoon;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class N_17143 {
+public class N_17143_02 {
 	public static int[][] dot = {{-1,0},{1,0},{0,1},{0,-1}};
 	public static Queue<Shark> queue;
 	public static void main(String[] args) {
@@ -51,22 +51,65 @@ public class N_17143 {
 			PriorityQueue<Shark> pq = new PriorityQueue<>();
 			while(!queue.isEmpty()) { // 상어 이동
 				Shark s = queue.poll();
-				int dx = s.x + (dot[s.dir][0]*s.speed);
-				int dy = s.y + (dot[s.dir][1]*s.speed);
 				
-				if(dx < 1 || dy < 1 || dx > R || dy > C) {
-					if(s.dir == 1 || s.dir == 3) {
-						s.dir +=1;
-					}else {
-						s.dir -=1;
+				int dx = s.x + (dot[s.dir-1][0] * s.speed);
+				int dy = s.y + (dot[s.dir-1][1] * s.speed);
+				
+				int go = s.speed;
+				if(dx < 1 || dx > R) {
+					dx = s.x;
+					while(true) {		
+						int temp = go;
+						if(s.dir == 1) { // 상
+							go -= (dx - 1);
+							if(go < 0) {
+								dx -= temp;
+								break;
+							}
+							dx = 1;
+							s.dir +=1;
+						}else if(s.dir == 2) { // 하
+							go -= (R-dx);
+							if(go < 0) {
+								dx += temp;
+								break;
+							}
+							dx = R;
+							s.dir -=1;
+						}
+					}
+				}else if(dy < 1 || dy > C) {
+					dy = s.y;
+					while(true) {
+						int temp = go;
+						if(s.dir == 3) { // 우
+							go -= (C - dy);
+							if(go < 0) {
+								dy += temp;
+								break;
+							}
+							dy = C;
+							s.dir +=1;
+						}else if(s.dir == 4) { // 좌
+							go -= (dy-1);
+							if(go < 0) {
+								dy -= temp;
+								break;
+							}
+							dy = 1;
+							s.dir -=1;
+						}
 					}
 				}
-				
+
+				s.x = dx;
+				s.y = dy;
 				pq.add(s);
 			}
 			
 			HashMap<String,Shark> hm = new HashMap<>(); // 같은 곳 고기 죽이기
-			for(Shark s : pq) {
+			while(!pq.isEmpty()) {
+				Shark s= pq.poll();
 				String str = s.x+","+s.y;
 				if(!hm.containsKey(str)) {
 					hm.put(str, s);
@@ -75,6 +118,7 @@ public class N_17143 {
 			
 			queue = new LinkedList<>(hm.values());
 		}
+		System.out.println(result);
 	}
 	
 	public static class Shark implements Comparable<Shark>{
@@ -91,7 +135,7 @@ public class N_17143 {
 		@Override
 		public int compareTo(Shark o) {
 			// TODO Auto-generated method stub
-			return this.size - o.size;
+			return o.size - this.size;
 		}
 	}
 }
