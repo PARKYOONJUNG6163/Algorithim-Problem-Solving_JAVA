@@ -1,8 +1,8 @@
-package SSAFY;
+package BaekJoon;
 
 import java.util.Scanner;
 
-public class N_17070 {
+public class N_17070_02 {
 	public static int[][] dot = {{0,1},{1,0},{1,1}}; // 가로 세로 대각선
 	public static int[][] arr;
 	public static int count;
@@ -63,6 +63,6 @@ public class N_17070 {
 			}
 		}
 	}
-	
 }
+
 
